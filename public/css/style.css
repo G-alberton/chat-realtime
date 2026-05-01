@@ -1,0 +1,72 @@
+@charset "utf-8";
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    background-color: #000;
+    color: #00ff00;
+    font-family: "Courier new", monospace;
+    height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#terminal::-webkit-scrollbar{
+    width: 6px;
+}
+
+#terminal::-webkit-scrollbar-thumb {
+    background: #00ff00;
+}
+
+#input-line {
+    display: flex;
+    padding: 10px 15px;
+    border-top: 1px solid #00ff00;
+}
+
+#prompt {
+    margin-right: 8px;
+}
+
+#msg {
+    background: transparent;
+    border: none;
+    outline: none;
+    color: #00ff00;
+    width: 100%;
+    font-family: inherit;
+    font-size: 16px;
+}
+
+#msg::placeholder {
+    color: #008F00;
+}
+
+#terminal, #msg, #prompt {
+    text-shadow: 0 0 5px #00ff00;
+}
+
+#msg {
+    caret-color: #00ff00;
+}
+
+.line {
+    margin-bottom: 4px;
+}
+
+.system {
+    color: #00ffff;
+}
+
+.private {
+    color: #ff00ff;
+}
+
+.username {
+    color: #ffff00;
+}
