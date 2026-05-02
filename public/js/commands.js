@@ -49,8 +49,9 @@ export function handleCommand(input, { print, socket, setUsername }) {
             break;
 
         case "/how":
-            print("Primeiro utilize o comando /nick colocar o seu nome na rede")
-            print("Apos a criação do nome é possivel ja começar a mandar mensagem no servidor")
+            print("Primeiro utilize o comando /nick colocar o seu nome na rede");
+            print("Apos a criação do nome é possivel ja começar a mandar mensagem no servidor");
+            break;
 
         default:
             print("Comando não reconhecido. Digite /help", "system");
