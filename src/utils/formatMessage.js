@@ -9,7 +9,7 @@ function formatMessage(user, text, type = "normal") {
     text: text || "",
     time,
     type,
-    id: Date.now(), // 🔥 id único da mensagem
+    id: Date.now(), 
   };
 }
 

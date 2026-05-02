@@ -41,7 +41,7 @@ export function handleCommand(input, { print, socket, setUsername }) {
                 return;
             }
 
-            console.log("ENVIANDO PARA:", to); // DEBUG
+            console.log("ENVIANDO PARA:", to);
 
             socket.emit("private message", { to, message });
             print(`[PRIVADO -> ${to}] ${message}`, "private");

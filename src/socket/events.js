@@ -1,11 +1,10 @@
 const formatMessage = require("../utils/formatMessage");
 
-const users = {}; // 🔥 CORRETO (plural)
+const users = {}; 
 
 module.exports = (io, socket) => {
     console.log("Usuário conectado:", socket.id);
 
-    // 👤 definir nome
     socket.on("set username", (username) => {
         users[socket.id] = username.trim().toLowerCase();
 
@@ -17,7 +16,6 @@ module.exports = (io, socket) => {
         io.emit("user list", Object.values(users));
     });
 
-    // 💬 mensagem normal
     socket.on("chat message", (data) => {
         const { text } = data;
         const user = users[socket.id] || "Anônimo";
@@ -25,7 +23,6 @@ module.exports = (io, socket) => {
         io.emit("chat message", formatMessage(user, text));
     });
 
-    // 📩 mensagem privada
     socket.on("private message", ({ to, message }) => {
         const from = users[socket.id] || "Anônimo";
 
@@ -40,10 +37,8 @@ module.exports = (io, socket) => {
         if (targetId) {
             const msg = formatMessage(from, message, "private");
 
-            // envia para quem recebe
             io.to(targetId).emit("private message", msg);
 
-            // envia para quem enviou
             socket.emit("private message", msg);
         } else {
             socket.emit(
@@ -53,12 +48,10 @@ module.exports = (io, socket) => {
         }
     });
 
-    // 📋 listar usuários
     socket.on("get users", () => {
         socket.emit("user list", Object.values(users));
     });
 
-    // ❌ desconectar
     socket.on("disconnect", () => {
         const username = users[socket.id];
 
