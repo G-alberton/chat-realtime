@@ -5,9 +5,12 @@ function formatMessage(user, text, type = "normal") {
   });
 
   return {
-    user,
-    text,
+    user: user || "Sistema",
+    text: text || "",
     time,
-    type, 
+    type,
+    id: Date.now(), // 🔥 id único da mensagem
   };
 }
+
+module.exports = formatMessage;

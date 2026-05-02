@@ -23,6 +23,11 @@ function print(text, className = "") {
 print("Bem-vindo ao Terminal Chat!", "system");
 print("Digite /help para ver os comandos disponíveis", "system");
 
+// 🔌 conexão
+socket.on("connect", () => {
+    console.log("Conectado ao servidor:", socket.id);
+});
+
 input.addEventListener("keydown", (e) => {
     if (e.key === "Enter") {
         const value = input.value.trim();
@@ -44,9 +49,16 @@ input.addEventListener("keydown", (e) => {
     }
 });
 
+// 💬 mensagem normal
 socket.on("chat message", (data) => {
     const { user, text } = data;
     print(`${user}: ${text}`);
+});
+
+// 🔥 MENSAGEM PRIVADA (ESSA ERA A FALTA)
+socket.on("private message", (data) => {
+    const { user, text } = data;
+    print(`[PRIVADO] ${user}: ${text}`, "private");
 });
 
 function setUsername(name) {
