@@ -9,6 +9,7 @@ export function handleCommand(input, { print, socket, setUsername }) {
             print("/clear - limpar terminal", "system");
             print("/users - listar usuários online", "system");
             print("/msg [usuario] [mensagem] - mensagem privada", "system");
+            print("/how - como começar", "system");
             break;
 
         case "/clear":
@@ -46,6 +47,10 @@ export function handleCommand(input, { print, socket, setUsername }) {
             socket.emit("private message", { to, message });
             print(`[PRIVADO -> ${to}] ${message}`, "private");
             break;
+
+        case "/how":
+            print("Primeiro utilize o comando /nick colocar o seu nome na rede")
+            print("Apos a criação do nome é possivel ja começar a mandar mensagem no servidor")
 
         default:
             print("Comando não reconhecido. Digite /help", "system");
